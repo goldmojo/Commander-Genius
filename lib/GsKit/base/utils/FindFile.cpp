@@ -491,7 +491,9 @@ void InitBaseSearchPaths() {
 	AddToFileList(&basesearchpaths, ".");
 	AddToFileList(&basesearchpaths, "${BIN}");
 #else // all other systems (Linux, *BSD, OS/2, ...)
-#ifdef ANDROID
+#if defined(DINGOO)
+	AddToFileList(&basesearchpaths, "/media/data/local/home/.CommanderGenius");
+#elif defined(ANDROID)
 	AddToFileList(&basesearchpaths, "${HOME}/SaveData");
 #else
 	AddToFileList(&basesearchpaths, "${HOME}/.CommanderGenius");
