@@ -35,13 +35,13 @@ void CVidConfig::reset()
 
 #if defined(CAANOO) || defined(WIZ) || defined(GP2X) || defined(DINGOO) || defined(NANONOTE)
     mDisplayRect.dim.x=320;
-    mDisplayRect.h=240;
+    mDisplayRect.dim.y=240;
 #if defined(GP2X) || defined(NANONOTE)
 	//m_Resolution.depth=32;
 #else
 	//m_Resolution.depth=16;
 #endif
-	Fullscreen=true;
+	mFullscreen=true;
 #else
     mDisplayRect.dim.x = 800;
     mDisplayRect.dim.y = 600;
