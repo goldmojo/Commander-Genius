@@ -494,7 +494,9 @@ void InitBaseSearchPaths()
 	AddToFileList(&basesearchpaths, ".");
 	AddToFileList(&basesearchpaths, "${BIN}");
 #else // all other systems (Linux, *BSD, OS/2, ...)
-#ifdef ANDROID
+#if defined(DINGOO)
+	AddToFileList(&basesearchpaths, "/media/data/local/home/.CommanderGenius");
+#elif defined(ANDROID)
 	//AddToFileList(&basesearchpaths, "${HOME}/SaveData");
 	AddToFileList(&basesearchpaths, SDL_AndroidGetInternalStoragePath());
 	AddToFileList(&basesearchpaths, "/storage/emulated/0/Android/data/net.sourceforge.clonekeenplus/files/SaveData");
