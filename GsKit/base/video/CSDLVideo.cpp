@@ -157,16 +157,19 @@ bool CSDLVideo::resizeDisplayScreen(const GsRect<Uint16>& newDim)
                                  mActiveAreaRect.dim.x,
                                  mActiveAreaRect.dim.y);
 
-
-        if(m_VidConfig.mIntegerScaling)
-        {
-            SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
-        }
-        else
-        {
-            SDL_RenderSetIntegerScale(renderer, SDL_FALSE);
-        }
-
+        #if defined(DINGOO)
+            // SDL_RenderSetIntegerScale does not exist. Skip action.
+            {}
+        #else
+            if(m_VidConfig.mIntegerScaling)
+            {
+                SDL_RenderSetIntegerScale(renderer, SDL_TRUE);
+            }
+            else
+            {
+                SDL_RenderSetIntegerScale(renderer, SDL_FALSE);
+            }
+        #endif
         //SDL_RenderSetViewport(renderer, nullptr);
 
         SDL_Rect viewport;
